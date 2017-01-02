@@ -1,0 +1,213 @@
+<?php echo $this->getMessagesBlock()->getGroupedHtml();
+$helper = Mage::helper('flexibleforms');
+$id     = $this->getRequest()->getParam('id');
+if( $helper->enabledFlexibleforms() && $helper->enabledFormForStore($id) ):
+        // To allow permission for Logged In users only
+	$allowForLoggedInUsers = $helper->allowToLoggedInUsers(); 
+	$isLoggedInUser = Mage::getSingleton('customer/session')->isLoggedIn();
+	if( $allowForLoggedInUsers && !$isLoggedInUser ): ?>
+        <p class="note-msg"><?php echo $this->__('<a href="%s">Login</a> to submit form.', Mage::helper('customer')->getLoginUrl()) ?></p>
+	<?php else:
+
+        $collection = $this->getFormData($id);
+        $formId     = $collection->getFormId();
+
+        $formModel   = Mage::getModel('flexibleforms/flexibleforms');
+        $fieldsModel = Mage::getModel('flexibleforms/fields');
+
+        // To get fields collection by form Id
+        $fieldsCollection = $fieldsModel->getFormFieldsCollection($formId);
+
+        $formTopDescription    = Mage::helper('cms')->getBlockTemplateProcessor()->filter($collection->getFormTopDescription());
+        $formBottomDescription = Mage::helper('cms')->getBlockTemplateProcessor()->filter($collection->getFormBottomDescription());
+        ?>
+
+        <?php if($formId): ?>
+            <div class="page-title">
+                <h1><?php echo $collection->getFormTitle(); ?></h1>
+            </div>
+
+            <?php if($formTopDescription): ?>
+                <div class="fieldset">
+                    <div class="top_content">
+                        <?php echo $formTopDescription; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <div class="flexibleforms_form">
+                <form name="flexibleforms_form_<?php echo $formId; ?>" id="flexibleforms_form_<?php echo $formId; ?>"  method="post" action="<?php echo $this->getFormAction() ?>" enctype="multipart/form-data">
+                    <?php
+                    //Fields with fieldset
+                    $fieldsetList = $formModel->getFieldset($formId);
+                    foreach($fieldsetList as $fieldset):
+                        $fieldsetFields= $formModel->getFieldsetFields($fieldset->getFieldsetId());
+                        $countFieldsetFields = $formModel->countFieldsetFields($fieldset->getFieldsetId());
+                        if($countFieldsetFields):
+                        ?>
+                        <div class="fieldset <?php echo $fieldset->getFieldsetClass();?>" id="fieldset_<?php echo $fieldset->getFieldsetId();?>">
+                           <?php if($fieldset->getFieldsetTitle()){?>
+                           <h2 class="legend"><?php echo $fieldset->getFieldsetTitle();?></h2>
+                           <?php } ?>
+                           <ul class="form-list">
+                                <?php //Load all form field with fieldset
+                                $column=0;
+                                $i=0;
+                                foreach($fieldsetFields as $field):
+									$column++;
+									$className='';
+									$class='';
+									if($column==1)
+									{
+										echo ($field->getLayout() == 2) ? '<li class="wide">' : '<li>';
+									}
+									$fieldClass = $field->getFieldClass() ? $field->getFieldClass() : '';
+									$layouttype = $field->getLayout();
+									switch($layouttype)
+									{
+										case 1:
+											$className = 'wide';
+											break;
+	
+										case  2:
+											$className = '';
+											break;
+										case 3:
+											$className = 'field';
+											break;
+									}
+									$class = ($className)? $className.' ' : '';
+									$fieldAttributeClass ='';
+									if(!empty($class) || !empty($fieldClass))
+									{
+										$fieldAttributeClass = 'class="'.$class.$fieldClass.'"';
+									}
+									?>
+									<div <?php echo $fieldAttributeClass;?>>
+										 <?php $formModel->getFields($field);?>
+									</div>
+									<?php 
+									if($column==2 || $field->getLayout()==1 || $field->getLayout()==2)
+									{
+										$column=0;
+										echo "</li>";
+									}
+									$prev=0;
+									$prev = $field->getLayout();
+								endforeach; ?> 
+                           </ul>
+                       </div>
+                    <?php endif;
+                    endforeach;
+
+                    //Fields without fieldset
+                    $fieldsWithoutFieldset = $formModel->getFieldsWithoutFieldset($formId);
+                    $countFieldsWithoutFieldset = $formModel->countFieldsWithoutFieldset($formId);
+                    if($countFieldsWithoutFieldset)
+                    { ?>
+                    <div class="fieldset"> 
+                        <ul class="form-list">
+                            <?php
+                            $column=0;
+                            $i=0;
+                            foreach($fieldsWithoutFieldset as $key=>$individualField):
+                                $column++;
+                                $className='';
+                                if($column==1)
+                                {
+                                    echo ($individualField->getLayout() == 2) ? '<li class="wide">' : '<li>';
+                                }
+                                $fieldClass = $individualField->getFieldClass() ? $individualField->getFieldClass() : '';
+                                $layouttype = $individualField->getLayout();
+                                switch($layouttype)
+                                {
+                                    case 1:
+                                        $className = 'wide';
+                                        break;
+
+                                    case  2:
+                                        $className = '';
+                                        break;
+                                    case 3:
+                                        $className = 'field';
+                                        break;
+                                }
+                                $class = ($className)? $className.' ' : '';
+                                $fieldAttributeClass ='';
+                                if(!empty($class) || !empty($fieldClass))
+                                {
+                                    $fieldAttributeClass = 'class="'.$class.$fieldClass.'"';
+                                }
+	                            ?>
+                                <div <?php echo $fieldAttributeClass;?>>
+                                    <?php $formModel->getFields($individualField);?>
+                                </div>
+    	                        <?php 
+                                if($column==2 || $individualField->getLayout()==1 || $individualField->getLayout()==2)
+                                {
+                                    $column=0;
+                                    echo "</li>";
+                                }
+                                $prev=0;
+                                $prev = $individualField->getLayout();
+							endforeach; ?> 
+                        </ul>
+                    </div>
+                    <?php
+                    }
+                    ?>
+                    <?php //retrive captcha block if captcha enable for form
+                    if($formModel->getCaptchaHtml($formId)): 
+                        echo $formModel->getCaptchaHtml($formId);
+                    endif; ?>
+                    <div class="buttons-set">
+                    	<?php //To retrive hidden fields if exists
+						$hiddenFields = $formModel->getHiddenFields($formId);
+	                    $countHiddenFields = $formModel->countHiddenFields($formId);
+						if($countHiddenFields):
+							foreach($hiddenFields as $hidden):
+								$formModel->getFields($hidden);
+							endforeach;
+							
+						endif;
+						?>
+                        <input type="hidden" name="form_id" id="form_id" value="<?php echo $formId; ?>" />
+                        <p class="required"><?php echo $this->__('* Required Fields'); ?></p>
+                        <button class="button" title="<?php echo $this->__($collection->getFormButtonText()) ?>" type="submit">
+                            <span>
+                                <span><?php echo $this->__($collection->getFormButtonText()) ?></span>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+    
+            <?php if($formBottomDescription): ?>
+                <div class="fieldset">
+                    <div class="bottom_content">
+                        <?php echo $formBottomDescription; ?>
+                    </div>
+                </div>
+            <?php endif;?>
+            <?php echo $this->getLayout()->createBlock('core/template')->setFormId($formId)->setTemplate('flexibleforms/jsscript.phtml')->toHtml(); ?>
+            <script type="text/javascript">
+                var flexibleforms_form_<?php echo $formId; ?>Form = new VarienForm('flexibleforms_form_<?php echo $formId; ?>', true);
+            </script>
+            <?php 
+            //Check country field is exists or not
+            $countryfieldCheck = $fieldsModel->getCollection()
+                                        ->addFieldToFilter('status', array('eq' => 1))
+                                        ->addFieldToFilter('type', array('eq' => 'country'))
+                                        ->addFieldToFilter('form_id', array('eq' => $formId));
+            if($countryfieldCheck->getSize()):
+            ?>
+            <script type="text/javascript">
+            //<![CDATA[
+                new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>);
+            //]]>
+            </script>
+            <?php endif;?>
+        <?php else: ?>
+            <p class="note-msg"><?php echo $this->__('Flexibleforms form not found.'); ?></p>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>

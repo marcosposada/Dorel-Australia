@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss"><stylesheet>flexibleforms/flexibleforms.css</stylesheet></action>
+        </reference>
+    </default>
+    <adminhtml_flexibleforms_flexibleforms_index>
+        <reference name="content">
+            <block type="flexibleforms/adminhtml_flexibleforms" name="flexibleforms" />
+        </reference>
+    </adminhtml_flexibleforms_flexibleforms_index>
+    <adminhtml_flexibleforms_result_index>
+        <reference name="content">
+            <block type="flexibleforms/adminhtml_result" name="result" />
+        </reference>
+    </adminhtml_flexibleforms_result_index>
+    <adminhtml_flexibleforms_flexibleforms_edit>
+            <update handle="editor"/>
+    </adminhtml_flexibleforms_flexibleforms_edit>
+</layout>

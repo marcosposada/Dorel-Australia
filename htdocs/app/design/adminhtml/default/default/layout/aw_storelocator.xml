@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">     
+    <adminhtml_aw_storelocator_location_index>
+        <reference name="content">
+            <block type="aw_storelocator/adminhtml_location" name="aw_storelocator.locations" />
+        </reference>
+    </adminhtml_aw_storelocator_location_index>
+     <adminhtml_aw_storelocator_location_edit>
+        <reference name="head">
+            <action method="addCss">
+                <styles>aw_storelocator/styles.css</styles>
+            </action>
+            <action method="addJs">
+                <styles>aw_storelocator/locator.js</styles>
+            </action>
+            <action method="setAwStoreLocatorJs">     
+                  <value>1</value>                        
+            </action>
+        </reference>
+    </adminhtml_aw_storelocator_location_edit>
+    <adminhtml_aw_storelocator_hour_index>
+        <reference name="content">
+            <block type="aw_storelocator/adminhtml_hour" name="aw_storelocator.hours" />
+        </reference>
+    </adminhtml_aw_storelocator_hour_index>
+    <adminhtml_aw_storelocator_hour_edit>
+        <reference name="head">
+            <action method="addCss">
+                <styles>aw_storelocator/styles.css</styles>
+            </action>
+
+            <reference name="left">
+                <block type="aw_storelocator/adminhtml_hour_edit_tabs" name="aw_storelocator.hour.tabs" />
+            </reference>
+            <reference name="content">
+                <block type="aw_storelocator/adminhtml_hour_edit" name="aw_storelocator.hour.edit" />
+            </reference>
+        </reference>
+    </adminhtml_aw_storelocator_hour_edit>
+    <adminhtml_aw_storelocator_hour_location>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="aw_storelocator/adminhtml_hour_edit_tab_location" name="aw_storelocator.hour.tab.location"/>
+            <block type="adminhtml/widget_grid_serializer" name="aw_storelocator.serializer.locations">
+                <action method="initSerializerBlock">
+                    <grid_block_name>aw_storelocator.hour.tab.location</grid_block_name>
+                    <data_callback>getSelectedLocationHidden</data_callback>
+                    <hidden_input_name>location_ids</hidden_input_name>
+                    <reload_param_name>locations</reload_param_name>
+                </action>
+            </block>
+        </block>
+    </adminhtml_aw_storelocator_hour_location>
+    <adminhtml_aw_storelocator_hour_locationgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="aw_storelocator/adminhtml_hour_edit_tab_location" name="aw_storelocator.hour.tab.location"/>
+        </block>
+    </adminhtml_aw_storelocator_hour_locationgrid>
+    <adminhtml_aw_storelocator_import_index>
+        <reference name="head">
+            <action method="addCss">
+                <styles>aw_storelocator/styles.css</styles>
+            </action>
+
+            <reference name="left">
+                <block type="aw_storelocator/adminhtml_import_edit_tabs" name="aw_storelocator.import.tabs" />
+            </reference>
+            <reference name="content">
+                <block type="aw_storelocator/adminhtml_import_edit" name="aw_storelocator.import.edit" />
+            </reference>
+        </reference>
+    </adminhtml_aw_storelocator_import_index>
+</layout>

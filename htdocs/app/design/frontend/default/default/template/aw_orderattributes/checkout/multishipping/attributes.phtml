@@ -1,0 +1,50 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This software is designed to work with Magento community edition and
+ * its use on an edition other than specified is prohibited. aheadWorks does not
+ * provide extension support in case of incorrect edition use.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_Orderattributes
+ * @version    1.0.4
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?><div id="aw-orderattributes-checkoutonepage-attributes-container" class="no-display">
+    <?php echo $this->getChildHtml('billing_address');?>
+    <?php echo $this->getChildHtml('payment_method');?>
+    <?php echo $this->getChildHtml('order_review');?>
+</div>
+<script type="text/javascript">
+    (function(data){
+        data.each(function(selectors){
+            var containerEl = $$(selectors[0]).first();
+            var insertAfter = $$(selectors[1]).first();
+            if (!insertAfter || !containerEl) {
+                return;
+            }
+            if (insertAfter.next()) {
+                insertAfter.up().insertBefore(containerEl, insertAfter.next());
+            } else {
+                insertAfter.up().appendChild(containerEl);
+            }
+        });
+    })([
+            ["#aw-orderattributes-checkoutmultishipping-attributes-container-billing-address", "#multishipping-billing-form address"],
+            ["#aw-orderattributes-checkoutmultishipping-attributes-container-payment-method", "#multishipping-billing-form .sp-methods"],
+            ["#aw-orderattributes-checkoutonepage-attributes-container-order-review", "#review-buttons-container >"]
+        ]);
+</script>

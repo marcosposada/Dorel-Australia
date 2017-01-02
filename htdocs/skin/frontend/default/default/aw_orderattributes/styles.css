@@ -1,0 +1,13 @@
+table.aw-oa-attributes {
+    width: 100%;
+    margin-top: 10px;
+}
+
+table.aw-oa-attributes td.label {
+    width: 100px;
+    margin-right: 5px;
+}
+
+#aw-oa-order-review .col-1{
+    width: auto;
+}

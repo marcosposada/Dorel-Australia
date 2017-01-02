@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+	<default>
+
+
+        <!-- Mage_Poll -->
+        <remove name="right.poll" />
+
+        <!--  Paypal ad -->
+        <remove name="paypal.partner.right.logo" />
+
+        <!-- Add blocks to the footer ====================================================================== -->
+		<reference name="footer">
+            <remove name="block_footer_links"/>
+            <remove name="block_footer_links2"/>
+
+            <remove name="block_footer_row2_column1"/>
+            <remove name="block_footer_row2_column2"/>
+            <remove name="block_footer_row2_column3"/>
+            <remove name="block_footer_row2_column4"/>
+            <remove name="block_footer_row2_column5"/>
+            <remove name="block_footer_row2_column6"/>
+            <remove name="block_footer_bottom"/>
+            <remove name="block_footer_payment"/>
+
+		</reference>
+
+	</default>
+
+
+
+	<!-- HOME PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+	<cms_index_index>
+        <reference name="root">
+
+            <remove name="ultraslideshow"/>
+        </reference>
+
+
+
+		<!-- Deprecated -->
+		<reference name="home_right">
+			<block type="cms/block" name="block_home_right1">
+				<action method="setBlockId"><block_id>block_home_right1</block_id></action>
+			</block>
+			<block type="cms/block" name="block_home_right2">
+				<action method="setBlockId"><block_id>block_home_right2</block_id></action>
+			</block>
+			<block type="cms/block" name="block_home_right3">
+				<action method="setBlockId"><block_id>block_home_right3</block_id></action>
+			</block>
+		</reference>
+
+	</cms_index_index>
+    <catalog_product_view>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type><name>js/catalog-product-view.js</name>
+            </action>
+        </reference>
+        <reference name="product.info">
+            <block type="catalog/product_view_media" name="media_thumbnail" template="catalog/product/view/thumbnail.phtml" />
+        </reference>
+        <remove name="product_tag_list" />
+    </catalog_product_view>
+    <catalog_category_view>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type><name>js/catalog-category-view.js</name>
+            </action>
+        </reference>
+    </catalog_category_view>
+</layout>

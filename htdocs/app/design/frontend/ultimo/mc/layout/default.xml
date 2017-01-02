@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <default>
+
+        <reference name="header">
+            <block type="cms/block" name="block_static_header_menu">
+                <action method="setBlockId"><block_id>block_static_header_menu</block_id></action>
+            </block>
+        </reference>
+
+
+        <!-- Add blocks to the footer ====================================================================== -->
+        <reference name="footer">
+            <remove name="block_footer_links"/>
+            <remove name="block_footer_links2"/>
+
+            <remove name="block_footer_row2_column1"/>
+            <remove name="block_footer_row2_column2"/>
+            <remove name="block_footer_row2_column3"/>
+            <remove name="block_footer_row2_column4"/>
+            <remove name="block_footer_row2_column5"/>
+            <remove name="block_footer_row2_column6"/>
+            <remove name="block_footer_bottom"/>
+            <remove name="block_footer_payment"/>
+
+        </reference>
+
+    </default>
+
+
+
+    <catalog_product_view>
+
+
+        <reference name="product.info">
+            <block type="catalog/product_view_media" name="media_thumbnail" template="catalog/product/view/thumbnail.phtml" />
+        </reference>
+
+    </catalog_product_view>
+</layout>

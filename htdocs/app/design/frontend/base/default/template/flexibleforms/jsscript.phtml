@@ -1,0 +1,68 @@
+<?php //Override default validation message
+$formId     = $this->getFormId();
+$fieldsModel = Mage::getModel('flexibleforms/fields');
+$custom_valid_msg_model = $fieldsModel->getCollection()
+                            ->addFieldToFilter('status', array('eq' => 1 ))
+                            ->addFieldToFilter('form_id', array('eq' => $formId ));
+if($custom_valid_msg_model)
+{?>
+<script type="text/javascript">
+//<![CDATA[
+    <?php
+    foreach($custom_valid_msg_model as $valid_msg){
+        if($valid_msg->getRequired()){
+
+            //State field validation
+            if($valid_msg->getType() == 'state')
+            {
+                $state_msg = ($valid_msg->getCustomValidation()) ? $valid_msg->getCustomValidation() : 'This is a required field.';
+                $custom_validation_msg = $valid_msg->getCustomValidation();
+                if(empty($custom_validation_msg)){ ?>
+                    Validation.add('required-entry-<?php echo $valid_msg->getFieldId();?>','<?php echo $state_msg;?>',function(v){
+                        return !Validation.get('IsEmpty').test(v);
+                    });
+                <?php
+                }
+            }
+            $custom_validation_msg = $valid_msg->getCustomValidation();
+            if(!empty($custom_validation_msg)){
+                if($valid_msg->getType()=='checkbox' || $valid_msg->getType()=='radio' || $valid_msg->getType()=='terms' ){
+                    //Validation override for checkbox, radio, and terms fields ?>
+                    Validation.add('validate-one-required-by-name-<?php echo $valid_msg->getFieldId();?>', '<?php echo $valid_msg->getCustomValidation();?>', function (v,elm){
+                        var inputs = $$('input[name="' + elm.name.replace(/([\\"])/g, '\\$1') + '"]');
+                        var error = 1;
+                        for(var i=0;i<inputs.length;i++){
+                            if((inputs[i].type == 'checkbox' || inputs[i].type == 'radio') && inputs[i].checked == true){
+                                error = 0;
+                            }
+                            if(Validation.isOnChange && (inputs[i].type == 'checkbox' || inputs[i].type == 'radio')){
+                                Validation.reset(inputs[i]);
+                            }
+                        }
+                        if( error == 0 ){
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    });
+                <?php }
+                else if($valid_msg->getType()=='country' || $valid_msg->getType()=='multiselect' || $valid_msg->getType()=='select' ){
+                    //Validation override for country, multiselect, and select fields
+                    ?>
+                    Validation.add('validate-select-<?php echo $valid_msg->getFieldId();?>', '<?php echo $valid_msg->getCustomValidation();?>', function (v) {
+                        return ((v != "none") && (v != null) && (v.length != 0));
+                    });
+                <?php }
+                else { ?>
+                    Validation.add('required-entry-<?php echo $valid_msg->getFieldId();?>','<?php echo $valid_msg->getCustomValidation();?>',function(v){
+                    return !Validation.get('IsEmpty').test(v);
+                    });
+               <?php }
+            }
+        }
+    }?>
+    //]]>
+    </script> 
+<?php
+}
+?>

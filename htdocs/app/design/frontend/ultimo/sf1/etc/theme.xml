@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<theme>
+    <parent>ultimo/default</parent>
+    <layout>
+        <updates>
+            <default>
+                <file>default.xml</file>
+            </default>
+        </updates>
+    </layout>
+</theme>

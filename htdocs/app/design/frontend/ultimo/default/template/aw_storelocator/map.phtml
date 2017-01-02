@@ -1,0 +1,201 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This software is designed to work with Magento community edition and
+ * its use on an edition other than specified is prohibited. aheadWorks does not
+ * provide extension support in case of incorrect edition use.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_Storelocator
+ * @version    1.1.2
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?>
+
+<div class="page-title">
+    <h1><?php echo $this->__('Store Locator'); ?></h1>
+</div>
+<div class="store-locator-top">
+    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('store_locator_top')->toHtml(); ?>
+</div>
+
+<div class="aw-storelocator-search-block">
+    <ul class="tabs" id="store-locator-tabs">
+        <li id="storelocator_tabs_radius" class="<?php echo $this->getTab() != 'tab2' ? 'active ': ''; ?>first" ><a href="javascript:void(0)"><?php echo $this->__('Search by Distance'); ?></a></li>
+        <li id="storelocator_tabs_address" class="<?php echo $this->getTab() == 'tab2' ? 'active ': ''; ?>last"><a href="javascript:void(0)"><?php echo $this->__('Search by Address'); ?></a></li>
+    </ul>
+
+    <div class="padder">
+        <div id="storelocator_tabs_radius_contents">
+            <form action="" method="post" id="form-validate-near-me">
+                <div class="fieldset">
+                    <h2 class="legend"><?php echo $this->__('Enter a location to find a store') ?></h2>
+                    <ul class="form-list">
+                        <li id="find-my-location">
+                            <button id="aw-storelocator-find-location" onclick="return false;" title="<?php echo $this->__('Click to Find My Location') ?>" class="button"><span><span><?php echo $this->__('Find My Location') ?></span></span></button>
+                        </li>
+                        <li class="show-list">
+                            or
+                        </li>
+                        <li id="current-address">
+                            <label for="address"><?php echo $this->__('Location') ?></label>
+                            <div class="input-box">
+                                <input type="text" name="address" alt="address" id="aw-storelocator-search-block-address" class="input-text" value="<?php echo $this->getAddress(); ?>" />
+                            </div>
+                        </li>
+                        <li>
+                            <label for="radius"><?php echo $this->__('Search Radius') ?></label>
+                            <div class="input-box">
+                                <?php echo $this->getRadiusSelectElement(); ?>
+                            </div>
+                        </li>
+                        <li>
+                            <label for="measurement"><?php echo $this->__('Search Radius Measurement ') ?></label>
+                            <div class="input-box">
+                                <?php echo $this->getMeasurementSelectElement(); ?>
+                            </div>
+                        </li>
+                    </ul>
+                    <input type="hidden" id="latitude" name="latitude" value="<?php echo $this->getLatitude(); ?>" />
+                    <input type="hidden" id="longitude" name="longitude" value="<?php echo $this->getLongitude(); ?>" />
+                    <input type="hidden" id="tab1" name="tab" value="tab1" />
+                    <div class="buttons-set">
+                        <button type="submit" class="button" value="<?php echo $this->__('Search') ?>" title="<?php echo $this->__('Search') ?>" /><span><span><?php echo $this->__('Search') ?></span></span></button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div id="storelocator_tabs_address_contents" style="display: none;">
+            <form action="" method="post" id="form-validate-address">
+                <div class="fieldset">
+                    <h2 class="legend"><?php echo $this->__('Define the address you want to search') ?></h2>
+                    <ul class="form-list">
+                        <li>
+                            <label for="country"><?php echo $this->__('Country') ?></label>
+                            <div class="input-box">
+                                <?php echo $this->getCountriesSelectElement(); ?>
+                            </div>
+                        </li>
+                        <li>
+                            <label for="state"><?php echo $this->__('State / Province') ?></label>
+                            <div class="input-box">
+                                <input type="text" name="state" alt="state" id="state" class="input-text" value="<?php echo $this->getState(); ?>" />
+                            </div>
+                        </li>
+                        <li>
+                            <label for="city"><?php echo $this->__('City') ?></label>
+                            <div class="input-box">
+                                <input type="text" name="city" alt="city" id="city" class="input-text" value="<?php echo $this->getCity(); ?>" />
+                            </div>
+                        </li>
+                        <li>
+                            <label for="zip"><?php echo $this->__('Zip Code') ?></label>
+                            <div class="input-box">
+                                <input type="text" name="zip" alt="zip" id="zip" class="input-text" value="<?php echo $this->getZip(); ?>" />
+                            </div>
+                        </li>
+                    </ul>
+                    <input type="hidden" id="tab2" name="tab" value="tab2" />
+                </div>
+                <div class="buttons-set">
+                    <button type="submit" class="button" value="<?php echo $this->__('Search') ?>" title="<?php echo $this->__('Search') ?>" /><span><span><?php echo $this->__('Search') ?></span></span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="aw-storelocator-cms-block">
+    <?php echo $this->renderCmsBlock(); ?>    
+</div>
+<div class="aw-storelocator-google-navigation" id="aw-storelocator-google-navigation">
+
+    <div class="aw-storelocator-navigation" id="aw-storelocator-navigation">
+        <?php if(!count($this->getLocations())): ?>
+            <p class="note-msg"><?php echo $this->__('There are no store locations matching the selection.') ?></p>
+        <?php else: ?>
+            <?php foreach($this->getLocations() as $location): ?>
+                <div id="aw-storelocator-navigation-item-<?php echo $location->getId(); ?>" class="aw-storelocator-navigation-item">
+                    <div class="aw-storelocator-description">
+                        <div><?php echo $location->getLocationTitle(); ?></div>
+                        <div><?php echo $location->getStreet(); ?>, <?php echo $location->getCity(); ?></div>
+                        <div>
+                            <?php echo $this->getCountryName($location->getCountry()); ?>&nbsp;
+                            <?php echo $this->getStateName($location->getState()); ?>&nbsp;
+                            <?php echo $location->getZip(); ?>
+                        </div>
+                        <div><?php echo $location->getPhone(); ?></div>
+                    </div>
+                    <div class="aw-storelocator-navigation-item-image">
+                        <?php if($url = $this->getStoreImgUrl($location)): ?>
+                            <img src="<?php echo $url; ?>" alt="<?php echo $this->__('Store Image'); ?>" />
+                        <?php else: ?>
+                            <?php echo "&nbsp;"; ?>
+                        <?php endif; ?>
+                    </div>
+                    <div style="display:block;clear:both;"></div>
+                    <div class="aw-storelocator-view-details">
+                        <button id="aw-storelocator-more-details-<?php echo $location->getId(); ?>" type="submit" class="button" value="<?php echo $this->__('More Details') ?>" title="<?php echo $this->__('More Details') ?>" /><span><span><?php echo $this->__('More Details') ?></span></span></button>
+                    </div>
+                    <div style="display:block;clear:both;"></div>
+              </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>    
+    <div class="aw-storelocator-google-map" id="aw-storelocator-google-map"></div>
+</div>
+
+<div class ="aw-storelocator-template" style="display:none">
+    <div class="aw-storelocator-info-window">
+        <div class="aw-storelocator-description">
+            <div>{{description}}</div>
+            <div>{{street}}, {{city}}</div>
+            <div>{{country}} {{state}} {{zip}}</div>
+            <div>{{phone}}</div>         
+        </div>  
+        <div class="aw-storelocator-store-image"></div>   
+    </div>    
+</div>
+
+<div class ="aw-storelocator-details-template" style="display:none">
+    <div class="aw-storelocator-info-window">
+        <div class="aw-storelocator-description">
+            <h1>{{title}}</h1>
+            <div>{{description}}</div>
+            <div>{{street}}, {{city}}</div>
+            <div>{{country}} {{state}} {{zip}}</div>
+            <div>{{phone}}</div>
+        </div>
+        <div class="aw-storelocator-details-store-image"></div>
+        <div style="display:block;clear:both;"></div>
+        <div class="aw-storelocator-store-opening-hours"><h4><?php echo $this->__('Opening Hours: ') ?></h4><br /><p>{{hours}}</p></div>
+    </div>
+</div>
+
+<div class="store-locator-bottom">
+    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('store_locator_bottom')->toHtml(); ?>
+</div>
+ 
+<script type="text/javascript">     
+    var awStorelocatorUserMap = new awStoreLocatorUserMap(<?php echo $this->getLocationsJson(); ?>, <?php echo $this->getBaseJson(); ?>);
+    new Varien.Tabs('.tabs');
+    //<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+    //]]>
+</script>
+ 
+ 

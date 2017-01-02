@@ -1,0 +1,24 @@
+<?php
+$field_id	 = $this->field['field_id'];
+$field_title     = $this->field['title'];
+$required	 = $this->field['required'];
+$field_class     = $this->field['field_class'];
+$field_note	 = $this->field['field_note'];
+$tooltip	 = $this->field['tooltip'];
+if($required){
+    $custom_message = $this->field['custom_validation'];
+    $custom_class = ' required-entry-'.$this->field['field_id'];
+    $required_class = (!empty($custom_message)) ? $custom_class : ' required-entry';
+}
+//To retrive field value on unsuccess submission
+$field_value = Mage::helper('flexibleforms');
+
+if($this->field['type']=='sendcopytome'): ?>
+    <div class="input-box">
+        <input type="checkbox" class="checkbox<?php echo $required_class ? $required_class : '' ?>" title="<?php echo $field_title; ?>" id="options_<?php echo $field_id; ?>" name="options[<?php echo $field_id; ?>]" value="1" <?php echo $checked = ($field_value->getFieldValue($field_id)==1)? 'checked' : ''; ?> />
+    	<label <?php echo $required ? ' class="required" ' : '' ?> for="options_<?php echo $field_id; ?>"><?php echo $this->__($field_title); ?> <?php echo $required ? ' <em>*</em> ' : '' ?></label>
+        <?php if($field_note): ?>
+        <p class="note"><?php echo $field_note; ?></p>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

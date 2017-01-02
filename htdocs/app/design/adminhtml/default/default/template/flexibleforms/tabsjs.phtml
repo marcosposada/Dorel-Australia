@@ -1,0 +1,12 @@
+<script type="text/javascript">
+//<![CDATA[
+	// Save and Continue Edit
+	var templateSyntax = /(^|.|\r|\n)({{(\w+)}})/;
+
+	function saveAndContinueEdit(saveUrl) {
+		var template = new Template(saveUrl, templateSyntax);
+		var url = template.evaluate({tab_id:<?php echo $this->getData('tabs_block')?>JsTabs.activeTab.name});
+		editForm.submit(url);
+	}
+//]]>
+</script>

@@ -1,0 +1,68 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This software is designed to work with Magento community edition and
+ * its use on an edition other than specified is prohibited. aheadWorks does not
+ * provide extension support in case of incorrect edition use.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_Orderattributes
+ * @version    1.0.4
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?><?php $collection = $this->getAttributeCollection();?>
+<?php if ($collection->getSize() > 0) : ?>
+    <div id="aw-orderattributes-checkoutonepage-attributes-container-payment-method">
+        <ul class="form-list" >
+            <?php foreach($collection as $attribute):?>
+                <?php
+                $html = $attribute->unpackData()->getTypeModel()->getFrontendFormRenderer()
+                    ->setValue($this->getValueByAttributeId($attribute->getId()))
+                    ->getHtml(true);
+                ?>
+                <?php if(strlen(trim($html)) > 0) :?>
+                    <li class="fields form-alt">
+                        <div class=""><?php echo $html;?></div>
+                    </li>
+                <?php endif;?>
+            <?php endforeach;?>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var awoaOriginalPaymentSaveFn = payment.save.bind(payment);
+        payment.save = function(){
+            var validator = new Validation("aw-orderattributes-checkoutonepage-attributes-container-payment-method");
+            if (validator.validate()) {
+                awoaOriginalPaymentSaveFn();
+            }
+        }
+        Ajax.Responders.register({
+            onCreate: function(instance, response) {
+                if (payment.saveUrl === instance.url) {
+                    var params = instance.parameters;
+                    Object.extend(params, Form.serialize("aw-orderattributes-checkoutonepage-attributes-container-payment-method", true));
+                    //copy-paste from prototype.js
+                    if (params = Object.toQueryString(params)) {
+                        if (/Konqueror|Safari|KHTML/.test(navigator.userAgent)) {
+                            params += '&_=';
+                        }
+                    }
+                    Object.extend(instance.options, {'postBody': params});
+                }
+            }
+        });
+    </script>
+<?php endif;?>

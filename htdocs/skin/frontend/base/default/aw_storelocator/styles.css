@@ -1,0 +1,162 @@
+.aw-storelocator-google-navigation {
+    width: 100%;
+    min-height: 600px;
+    height: auto !important;
+}
+
+.aw-storelocator-navigation {
+    width: 35%;
+    height: 600px;
+    border: 1px solid #CCC;
+    float: left;
+    overflow: auto;
+}
+
+.aw-storelocator-google-map {
+    width: 64%;
+    min-height: 600px;
+    height: auto !important;
+    border: 1px solid #CCC;
+    float: right;
+}
+
+/* ultimo theme - zoom fix */
+.aw-storelocator-google-map img {
+    max-width: none;
+}
+
+.aw-storelocator-info-window {
+    width: 280px;
+    padding-top: 10px;
+    min-height: 90px;
+    height: auto !important;
+}
+
+.aw-storelocator-store-image {
+    width: 80px;
+    float: right;
+}
+
+.aw-storelocator-store-image img {
+    width: 80px;
+    height: 80px;
+    border: none;
+}
+
+.aw-storelocator-navigation-item {
+    width: 92%;
+    min-height: 80px;
+    height: auto !important;
+    margin: 5px auto;
+    border: 1px solid #CCC;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.aw-storelocator-item-selected {
+    border: 1px solid black;
+}
+
+.aw-storelocator-navigation-item-image {
+    float: right;
+    min-height: 80px;
+    width: 80px;
+}
+
+.aw-storelocator-navigation-item-image img {
+    border: none;
+    width: 80px;
+}
+
+.aw-storelocator-description {
+    float: left;
+    height: auto !important;
+    min-height: 80px;
+    width: 200px;
+    word-break: normal;
+}
+
+.aw-storelocator-search-block, .aw-storelocator-cms-block {
+    margin-bottom: 20px;
+}
+
+.aw-storelocator-search-block .tabs {
+    height: 29px;
+}
+
+.aw-storelocator-search-block .tabs li {
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    float: left;
+    
+    margin-right: 10px;
+}
+
+.aw-storelocator-search-block .tabs a {
+    color: #444;
+    display: block;
+    font-size: 14px;
+    line-height: normal;
+    padding: 6px 20px;
+}
+
+.aw-storelocator-search-block .tabs a:hover {
+    background-color: #ddd;
+    color: #444;
+    text-decoration: none;
+    /*height: 20px;*/
+}   
+
+.aw-storelocator-search-block .tabs li.active a, .aw-storelocator-search-block .tabs li.active a:hover {
+    font-weight: bold;
+}
+
+.aw-storelocator-search-block .tabs-content h2 {
+    display: none;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.aw-storelocator-search-block .padder {
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.aw-storelocator-search-block #current-address .input-box {
+    width: 400px;
+}
+
+.aw-storelocator-search-block #current-address .input-box .button {
+    margin-left: 10px;
+}
+
+.aw-storelocator-navigation .note-msg {
+    margin: 5px;
+}
+
+.alphacube_message .aw-storelocator-description .location-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.alphacube_message .aw-storelocator-description {
+    text-align: left;
+    padding: 0 20px 20px 20px;
+    line-height: 1.55;
+}
+
+.alphacube_message .aw-storelocator-info-window {
+    width: 380px;
+    padding-top: 20px;
+}
+
+.alphacube_message .aw-storelocator-store-opening-hours {
+    text-align: left;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.alphacube_buttons {
+    padding-bottom: 20px;
+}

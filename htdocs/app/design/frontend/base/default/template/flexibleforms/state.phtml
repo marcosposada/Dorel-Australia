@@ -1,0 +1,46 @@
+<?php
+$field_id	 = $this->field['field_id'];
+$field_title     = $this->field['title'];
+$required	 = $this->field['required'];
+$field_class     = $this->field['field_class'];
+$field_note	 = $this->field['field_note'];
+$tooltip	 = $this->field['tooltip'];
+if($required){
+    $custom_message = $this->field['custom_validation'];
+    $custom_class = ' required-entry-'.$this->field['field_id'];
+    $custom_select_class = ' validate-select-'.$this->field['field_id'];
+    $required_class = (!empty($custom_message)) ? $custom_class : ' required-entry';
+    $required_select_class = (!empty($custom_message)) ? $custom_select_class : ' validate-select';
+}else{
+    $required_class='';
+    $required_select_class='';
+}
+//To retrive field value on unsuccess submission
+$field_value = Mage::helper('flexibleforms');
+
+if($this->field['type']=='state'): ?>
+    <label <?php echo $required ? ' class="required" ' : '' ?>><?php echo $this->__($field_title); ?> <?php echo $required ? ' <em>*</em> ' : '' ?></label>
+    <?php if($tooltip): ?>
+        <span id="label-info">
+            <img src="<?php echo $this->getSkinUrl("css/flexibleforms/images/help.png"); ?>" alt="<?php echo $this->__('Help'); ?>" />
+            <span class="label-info-tooltip"><?php echo $tooltip; ?></span>
+        </span>
+    <?php endif; ?>
+    <div class="input-box">
+        <select id="region_id" name="state_options[<?php echo $field_id; ?>]" title="<?php echo $this->__($field_title); ?>" class="<?php echo $required_select_class; ?>" style="display:none;">
+           <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+        </select>
+
+        <script type="text/javascript">
+        //<![CDATA[
+            $('region_id').setAttribute('defaultValue',  "0");
+        //]]>
+        </script>
+       
+        <input type="text" id="region" name="options[<?php echo $field_id; ?>]" value="<?php echo $field_value->getFieldValue($field_id);?>" title="<?php echo $this->__($field_title); ?>" class="input-text<?php echo $custom_class;?>"/>
+
+	<?php if($field_note): ?>
+        <p class="note"><?php echo $field_note; ?></p>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

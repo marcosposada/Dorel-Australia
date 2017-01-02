@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<widgets>
+    <flexibleforms_widgetform type="flexibleforms/widgetform" translate="name description" module="flexibleforms">
+        <name>Flexibleforms: Form</name>
+        <description>Allows to add form to any page</description>
+        <parameters>
+            <form_id>
+                <label>Flexibleforms</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <source_model>flexibleforms/flexibleforms</source_model>
+            </form_id>
+        </parameters>
+    </flexibleforms_widgetform>
+</widgets>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <cms>
+            <children>
+                <aw_storelocator translate="title" module="aw_storelocator">
+                    <title>Store Locator</title>
+                    <sort_order>50</sort_order>
+                    <children>
+                        <location translate="title">
+                            <title>Manage Store Locations</title>
+                            <sort_order>1</sort_order>
+                            <action>adminhtml/aw_storelocator_location</action>
+                        </location>
+                        <hour translate="title">
+                            <title>Manage Opening Hours</title>
+                            <sort_order>2</sort_order>
+                            <action>adminhtml/aw_storelocator_hour</action>
+                        </hour>
+                        <!-- <holiday translate="title">
+                            <title>Manage Holidays</title>
+                            <sort_order>3</sort_order>
+                            <action>adminhtml/aw_storelocator_holiday</action>
+                        </holiday> -->
+                        <config translate="title">
+                            <title>General Settings</title>
+                            <sort_order>15</sort_order>
+                            <action>adminhtml/system_config/edit/section/aw_storelocator</action>
+                        </config>
+                    </children>
+                </aw_storelocator>
+            </children>
+        </cms>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <cms>
+                        <children>
+                            <aw_storelocator translate="title" module="aw_storelocator">
+                                <title>Store Locator</title>
+                                <sort_order>50</sort_order>
+                                <children>
+                                    <location translate="title">
+                                        <title>Store Locations</title>
+                                        <sort_order>1</sort_order>
+                                        <action>adminhtml/aw_storelocator_location</action>
+                                    </location>                
+                                    <config translate="title">
+                                        <title>General Settings</title>
+                                        <sort_order>15</sort_order>
+                                        <action>adminhtml/system_config/edit/section/aw_storelocator</action>
+                                    </config>
+                                </children>
+                            </aw_storelocator>
+                        </children>
+                    </cms>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <aw_storelocator translate="title" module="aw_storelocator">
+                                        <title>aheadWorks - Store Locator</title>
+                                    </aw_storelocator>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

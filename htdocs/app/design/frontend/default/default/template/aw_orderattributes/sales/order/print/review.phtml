@@ -1,0 +1,50 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This software is designed to work with Magento community edition and
+ * its use on an edition other than specified is prohibited. aheadWorks does not
+ * provide extension support in case of incorrect edition use.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_Orderattributes
+ * @version    1.0.4
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?><?php if ($this->isOrderHasOrderReviewAttributes()): ?>
+    <div id="aw-oa-order-review" class="col2-set">
+        <div class="col-1">
+            <div class="box">
+                <div class="box-title">
+                    <h2><?php echo $this->__('Order Review'); ?></h2>
+                </div>
+                <div class="box-content">
+                    <?php echo $this->getChildHtml('aw.oa.order.review.attributes'); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        (function() {
+            var orderReviewBox = $('aw-oa-order-review');
+            if (orderReviewBox) {
+                var orderDataSets = $$('.col2-set');
+                orderDataSets[orderDataSets.length - 2].insert({
+                    after: orderReviewBox
+                });
+            }
+        })();
+    </script>
+<?php endif; ?>

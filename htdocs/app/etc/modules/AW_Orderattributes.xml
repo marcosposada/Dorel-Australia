@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <AW_Orderattributes>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <AW_Lib />
+            </depends>
+        </AW_Orderattributes>
+    </modules>
+</config>

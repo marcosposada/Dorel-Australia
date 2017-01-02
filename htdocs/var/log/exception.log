@@ -1,0 +1,45 @@
+2016-09-15T00:16:31+00:00 ERR (3): 
+exception 'Exception' with message 'Error write to file /Users/Ryan/Sites/dorel-australia/skin/frontend/ultimo/default/css/_config/grid_default.css' in /Users/Ryan/Sites/dorel-australia/lib/Varien/Io/File.php:141
+Stack trace:
+#0 /Users/Ryan/Sites/dorel-australia/app/code/local/Infortis/Ultimo/Model/Cssgen/Generator.php(1): Varien_Io_File->streamOpen('/Users/Ryan/Sit...', 'w+', 511)
+#1 /Users/Ryan/Sites/dorel-australia/app/code/local/Infortis/Ultimo/Model/Cssgen/Generator.php(1): Infortis_Ultimo_Model_Cssgen_Generator->_generateStoreCss('grid', 'default')
+#2 /Users/Ryan/Sites/dorel-australia/app/code/local/Infortis/Ultimo/Model/Cssgen/Generator.php(1): Infortis_Ultimo_Model_Cssgen_Generator->_generateWebsiteCss('grid', 'base')
+#3 /Users/Ryan/Sites/dorel-australia/app/code/local/Infortis/Ultimo/data/ultimo_setup/data-upgrade-1.15.4-1.16.0.php(47): Infortis_Ultimo_Model_Cssgen_Generator->generateCss('grid', NULL, NULL)
+#4 /Users/Ryan/Sites/dorel-australia/app/code/core/Mage/Core/Model/Resource/Setup.php(624): include('/Users/Ryan/Sit...')
+#5 /Users/Ryan/Sites/dorel-australia/app/code/core/Mage/Core/Model/Resource/Setup.php(407): Mage_Core_Model_Resource_Setup->_modifyResourceDb('data-upgrade', '1.15.1', '1.16.1')
+#6 /Users/Ryan/Sites/dorel-australia/app/code/core/Mage/Core/Model/Resource/Setup.php(286): Mage_Core_Model_Resource_Setup->_upgradeData('1.15.1', '1.16.1')
+#7 /Users/Ryan/Sites/dorel-australia/app/code/core/Mage/Core/Model/Resource/Setup.php(269): Mage_Core_Model_Resource_Setup->applyDataUpdates()
+#8 /Users/Ryan/Sites/dorel-australia/app/code/core/Mage/Core/Model/App.php(362): Mage_Core_Model_Resource_Setup::applyAllDataUpdates()
+#9 /Users/Ryan/Sites/dorel-australia/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#10 /Users/Ryan/Sites/dorel-australia/index.php(83): Mage::run('', 'store')
+#11 {main}
+2016-09-15T00:16:31+00:00 ERR (3): 
+exception 'Exception' with message 'Error write to file /Users/Ryan/Sites/dorel-australia/skin/frontend/ultimo/default/css/_config/layout_default.css' in /Users/Ryan/Sites/dorel-australia/lib/Varien/Io/File.php:141
+Stack trace:
+#0 /Users/Ryan/Sites/dorel-australia/app/code/local/Infortis/Ultimo/Model/Cssgen/Generator.php(1): Varien_Io_File->streamOpen('/Users/Ryan/Sit...', 'w+', 511)
+#1 /Users/Ryan/Sites/dorel-australia/app/code/local/Infortis/Ultimo/Model/Cssgen/Generator.php(1): Infortis_Ultimo_Model_Cssgen_Generator->_generateStoreCss('layout', 'default')
+#2 /Users/Ryan/Sites/dorel-australia/app/code/local/Infortis/Ultimo/Model/Cssgen/Generator.php(1): Infortis_Ultimo_Model_Cssgen_Generator->_generateWebsiteCss('layout', 'base')
+#3 /Users/Ryan/Sites/dorel-australia/app/code/local/Infortis/Ultimo/data/ultimo_setup/data-upgrade-1.15.4-1.16.0.php(48): Infortis_Ultimo_Model_Cssgen_Generator->generateCss('layout', NULL, NULL)
+#4 /Users/Ryan/Sites/dorel-australia/app/code/core/Mage/Core/Model/Resource/Setup.php(624): include('/Users/Ryan/Sit...')
+#5 /Users/Ryan/Sites/dorel-australia/app/code/core/Mage/Core/Model/Resource/Setup.php(407): Mage_Core_Model_Resource_Setup->_modifyResourceDb('data-upgrade', '1.15.1', '1.16.1')
+#6 /Users/Ryan/Sites/dorel-australia/app/code/core/Mage/Core/Model/Resource/Setup.php(286): Mage_Core_Model_Resource_Setup->_upgradeData('1.15.1', '1.16.1')
+#7 /Users/Ryan/Sites/dorel-australia/app/code/core/Mage/Core/Model/Resource/Setup.php(269): Mage_Core_Model_Resource_Setup->applyDataUpdates()
+#8 /Users/Ryan/Sites/dorel-australia/app/code/core/Mage/Core/Model/App.php(362): Mage_Core_Model_Resource_Setup::applyAllDataUpdates()
+#9 /Users/Ryan/Sites/dorel-australia/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#10 /Users/Ryan/Sites/dorel-australia/index.php(83): Mage::run('', 'store')
+#11 {main}
+2016-09-15T00:16:31+00:00 ERR (3): 
+exception 'Exception' with message 'Error write to file /Users/Ryan/Sites/dorel-australia/skin/frontend/ultimo/default/css/_config/design_default.css' in /Users/Ryan/Sites/dorel-australia/lib/Varien/Io/File.php:141
+Stack trace:
+#0 /Users/Ryan/Sites/dorel-australia/app/code/local/Infortis/Ultimo/Model/Cssgen/Generator.php(1): Varien_Io_File->streamOpen('/Users/Ryan/Sit...', 'w+', 511)
+#1 /Users/Ryan/Sites/dorel-australia/app/code/local/Infortis/Ultimo/Model/Cssgen/Generator.php(1): Infortis_Ultimo_Model_Cssgen_Generator->_generateStoreCss('design', 'default')
+#2 /Users/Ryan/Sites/dorel-australia/app/code/local/Infortis/Ultimo/Model/Cssgen/Generator.php(1): Infortis_Ultimo_Model_Cssgen_Generator->_generateWebsiteCss('design', 'base')
+#3 /Users/Ryan/Sites/dorel-australia/app/code/local/Infortis/Ultimo/data/ultimo_setup/data-upgrade-1.15.4-1.16.0.php(49): Infortis_Ultimo_Model_Cssgen_Generator->generateCss('design', NULL, NULL)
+#4 /Users/Ryan/Sites/dorel-australia/app/code/core/Mage/Core/Model/Resource/Setup.php(624): include('/Users/Ryan/Sit...')
+#5 /Users/Ryan/Sites/dorel-australia/app/code/core/Mage/Core/Model/Resource/Setup.php(407): Mage_Core_Model_Resource_Setup->_modifyResourceDb('data-upgrade', '1.15.1', '1.16.1')
+#6 /Users/Ryan/Sites/dorel-australia/app/code/core/Mage/Core/Model/Resource/Setup.php(286): Mage_Core_Model_Resource_Setup->_upgradeData('1.15.1', '1.16.1')
+#7 /Users/Ryan/Sites/dorel-australia/app/code/core/Mage/Core/Model/Resource/Setup.php(269): Mage_Core_Model_Resource_Setup->applyDataUpdates()
+#8 /Users/Ryan/Sites/dorel-australia/app/code/core/Mage/Core/Model/App.php(362): Mage_Core_Model_Resource_Setup::applyAllDataUpdates()
+#9 /Users/Ryan/Sites/dorel-australia/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#10 /Users/Ryan/Sites/dorel-australia/index.php(83): Mage::run('', 'store')
+#11 {main}

@@ -1,0 +1,318 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Pixlogix Flexibleforms
+*
+* Module System Configuration
+*
+* @category   Pixlogix
+* @package    Pixlogix_Flexibleforms
+* @author     Pixlogix Team <support@pixlogix.com>
+*
+*/
+-->
+<config>
+    <tabs>
+        <flexibleforms translate="label" module="flexibleforms">
+            <label>Pixlogix Flexibleforms</label>
+            <sort_order>1</sort_order>
+        </flexibleforms>
+    </tabs>
+    <sections>
+        <flexibleforms_options translate="label" module="flexibleforms">
+            <label>Forms Configuration</label>
+            <tab>flexibleforms</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable>
+                            <label>Enable Forms</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enable/Disable extension.</comment>
+                        </enable>
+                        <enable_jquery>
+                            <label>Enable jQuery</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[If already used jquery library in current theme then disable it. <br />i.e. Magento '<strong>rwd</strong>' default theme provides '<strong>jquery-1.10.2.min.js</strong>' file then no need to enable it.]]></comment>
+                        </enable_jquery>
+                        <enable_top_link>
+                            <label>Enable in Top Link</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Enable/Disable Flexibleforms link in top link.]]></comment>
+                        </enable_top_link>
+                        <enable_footer_link>
+                            <label>Enable in Footer Link</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Enable/Disable Flexibleforms link in footer link.]]></comment>
+                        </enable_footer_link>
+						<redirect_url>
+                            <label>Redirect Url</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[To redirect page after successful form submission. <br />i.e. http://www.domain.com]]></comment>
+						</redirect_url>
+                        <loggedin_users>
+                            <label>Enable for logged in users only</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Allow permission to submit form for logged in users.</comment>
+                        </loggedin_users>
+                        <enable_store_result_database>
+                            <label>Store Result in Database</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Enable/Disable form results to database.]]></comment>
+                        </enable_store_result_database>
+                    </fields>
+                </general>
+				<admin_email_configuration>
+                    <label>Admin Email Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                            <enable_to_admin>
+                                    <label>Enable Email to Admin</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>110</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                            </enable_to_admin>
+                            <admin_email_name>
+                                    <label>Admin Email Name</label>
+                                    <frontend_type>text</frontend_type>
+                                    <sort_order>120</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <comment>Set admin email name.</comment>
+                            </admin_email_name>
+                            <admin_email_address>
+                                    <label>Admin To Email Address</label>
+                                    <frontend_type>text</frontend_type>
+                                    <sort_order>130</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <comment>Set multiple admin email address separated by comma.</comment>
+                            </admin_email_address>
+                            <admin_from_email_address>
+                                    <label>Admin From Email Address</label>
+                                    <frontend_type>text</frontend_type>
+                                    <sort_order>135</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <comment><![CDATA[<div style="color:red;">This Email address must contain to the same domain as the site.<br>i.e. <strong>no-reply@domain.com</strong></div>]]></comment>
+                            </admin_from_email_address>
+                            <admin_email_subject>
+                                    <label>Admin Email Subject</label>
+                                    <frontend_type>text</frontend_type>
+                                    <sort_order>140</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <comment>Set admin email subject.</comment>
+                            </admin_email_subject>
+                            <admin_email_template translate="label">
+                                    <label>Admin Email Template</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_email_template</source_model>
+                                    <sort_order>145</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                            </admin_email_template>
+                    </fields>
+                </admin_email_configuration>
+                <customer_email_configuration>
+                    <label>Customer Email Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable_to_customer>
+                            <label>Enable Email to Customer</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_to_customer>
+						<customer_email_name>
+                            <label>Customer Email Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Set customer email name.</comment>
+                        </customer_email_name>
+                        <customer_email_address>
+                            <label>Customer Email Address</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>230</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[<div style="color:red;">This Email address must contain to the same domain as the site.<br>i.e. <strong>no-reply@domain.com</strong></div>]]></comment>
+                        </customer_email_address>
+                        <customer_email_subject>
+                            <label>Customer Email Subject</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>240</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Set customer email subject.</comment>
+                        </customer_email_subject>
+                        <customer_email_template translate="label">
+                            <label>Customer Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>245</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customer_email_template>
+                    </fields>
+                </customer_email_configuration>
+                <product_inquiry_configuration>
+                    <label>Product Inquiry Form Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>4</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable_product_inquiry>
+                            <label>Enable Product Inquiry</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enable/Disable product inquiry form.</comment>
+                        </enable_product_inquiry>
+                        <product_inquiry_section_title>
+                            <label>Display Title into tab/product collateral</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enter text to display into tab/product collateral</comment>
+                        </product_inquiry_section_title>
+                        <flexibleforms_list>
+                            <label>Flexibleforms List</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>flexibleforms/system_config_source_view</source_model>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Select a form to display as product inquiry form</comment>
+                        </flexibleforms_list>
+                        <product_attribute>
+                            <label>Product Attribute in Email</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>flexibleforms/system_config_source_productattribute</source_model>
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Selected product attribute will display on product inquiry email</comment>
+                        </product_attribute>
+                    </fields>
+                </product_inquiry_configuration>
+                <captcha_configuration>
+                    <label>Captcha Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<enable_captcha>
+                            <label>Enable Captcha</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>310</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_captcha>
+						<captcha_public_key>
+                            <label>Site key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>320</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[You can get "Site Key" from below link: <a href="https://www.google.com/recaptcha/admin/create" target="_blank">https://www.google.com/recaptcha/admin/create</a>]]></comment>
+                        </captcha_public_key>
+                        <captcha_private_key>
+                            <label>Secret key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>330</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[You can get "Secret key" from below link: <a href="https://www.google.com/recaptcha/admin/create" target="_blank">https://www.google.com/recaptcha/admin/create</a>]]></comment>
+						</captcha_private_key>
+                    </fields>
+				</captcha_configuration>
+			</groups>
+        </flexibleforms_options>
+    </sections>
+</config>

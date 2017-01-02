@@ -1,0 +1,68 @@
+.recaptcha_theme_red #recaptcha_response_field { height:17px; }
+.recaptcha_theme_red #recaptcha_response_field { height:17px; }
+.flexibleforms_form ul { list-style:none !important; padding:0; margin:0 !important; }
+.flexibleforms_form ul li { margin-left:0 !important; }
+.flexibleforms_form ul li button.ui-datepicker-trigger { border:none; background:none; margin-left: 5px; }
+.flexibleforms_form ul li p.note { color:#a0a0a0; font-size:11px; font-style:italic; }
+.flexibleforms_form .form-list label { float:none; }
+.flexibleforms_form .form-list textarea { max-width: 100%; width: 365px; }
+
+.flexibleforms-index-index .pager { float:none; background:#f4f4f4; border-bottom:1px solid #ccc; border-top:1px solid #ccc; padding:8px 10px 5px; }
+.flexibleforms-index-index .pager > .count-container { float:right; }
+.flexibleforms-index-index .pager .amount, .flexibleforms-index-index .pager .limiter { margin-bottom:0; }
+.flexibleforms_list_content { padding:10px; }
+
+.flexibleforms_form .form-list .field { float: left; width: 50%; padding: 0 10px; }
+.flexibleforms_form .form-list .input-box { clear: both; display: block; position: relative; }
+.flexibleforms_form .form-list li { margin: 0 -10px; list-style: none; }
+.flexibleforms_form .form-list li .wide { padding: 0 10px; width: 50%; }
+.flexibleforms_form .main-container .flexibleforms_form .form-list textarea, .flexibleforms_form .form-list textarea { width: 100%; }
+.flexibleforms_form .form-list li:after { content:''; display:table; clear: both; }
+form.flexibleforms_form .legend { font-weight: 500; border-color: #ddd; }
+.flexibleforms_form .form-list input.input-text { width: 100%; }
+
+.flexibleforms_form .form-list li.wide { margin-left:0 !important; margin-right:0 !important; }
+.flexibleforms_form ul li, .flexibleforms_form .form-list li { margin: 0 -10px !important; }
+.flexibleforms_form .form-list ul li li { margin: 0 !important; }
+.flexibleforms_form .form-list select { width: 100%; }
+.flexibleforms_form .ui-datepicker-trigger, .flexibleforms_form img.v-middle { position:absolute; right: 10px; top:9px; }
+.flexibleforms_form input[type="url"] { height: 30px; padding: 0 8px; }
+.flexibleforms_form .form-list select {margin:0; padding:5px;}
+.flexibleforms_form ul li li, .flexibleforms_form .form-list li li { margin: 0 !important;}
+/*.flexibleforms_form .g-recaptcha{margin-left: 9px;}*/
+.flexibleforms_form .g-recaptcha { margin: 10px 0 0; display: inline-block; } 
+#label-info { position: relative; left:10px; top:2px;}
+#label-info img { display: inline; }
+#label-info .label-info-tooltip { display: none; position: absolute; max-width: 270px; width: 270px; z-index: 100; background-color: #f8f8f8; border: 1px solid #dedede; font-size: 12px; padding: 10px; border-radius: 2px; word-wrap: break-word; }
+#label-info:hover .label-info-tooltip, #label-info:active .label-info-tooltip { display: block; }
+/*.col2-right-layout .col-main .flexibleforms_form { float: none; width: auto; }*/
+.jq-ry-container{position:relative;padding:0 5px;line-height:0;display:block;cursor:pointer; z-index:0;}
+.jq-ry-container[readonly=readonly]{cursor:default}
+.jq-ry-container>.jq-ry-group-wrapper{position:relative;width:100%}
+.jq-ry-container>.jq-ry-group-wrapper>.jq-ry-group{position:relative;line-height:0;z-index:10;white-space:nowrap}
+.jq-ry-container>.jq-ry-group-wrapper>.jq-ry-group>svg{display:inline-block}
+.jq-ry-container>.jq-ry-group-wrapper>.jq-ry-group.jq-ry-normal-group{width:100%}
+.jq-ry-container>.jq-ry-group-wrapper>.jq-ry-group.jq-ry-rated-group{width:0;z-index:11;position:absolute;top:0;left:0;overflow:hidden}
+
+@media all and (max-width: 1280px) and (min-width: 1001px) {
+    .col1-layout .flexibleforms_form .fieldset { float: left; width: 75%; }
+}
+
+@media only screen and (max-width: 1000px) {
+    .flexibleforms_form .fieldset { max-width: 100%; }
+}
+
+
+@media only screen and (max-width: 479px) {
+    .flexibleforms_form ul li {  margin: 0 !important;}
+    .flexibleforms_form .form-list li .wide { float:none; width: auto; padding: 0;}
+    .flexibleforms_form .form-list .field { float:none; width: auto; padding: 0; }
+    /*.flexibleforms_form .g-recaptcha{margin: 0;}*/
+    .flexibleforms_form .g-recaptcha{margin: 10px 0;}
+    .flexibleforms_form .form-list li {padding: 0 10px;}
+    .flexibleforms_form .form-list li li, .flexibleforms_form .form-list li.wide {padding: 0;}
+}
+/*
+@media only screen and (max-width: 360px) {
+    .flexibleforms_form .form-list li { padding:10px; }
+}*/

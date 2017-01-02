@@ -1,0 +1,71 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This software is designed to work with Magento community edition and
+ * its use on an edition other than specified is prohibited. aheadWorks does not
+ * provide extension support in case of incorrect edition use.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_Orderattributes
+ * @version    1.0.4
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?><?php $linkedAttributes = $this->getLinkedAttributes(); ?>
+<?php if (isset($linkedAttributes['order-review']) && count($linkedAttributes['order-review'])) : ?>
+    <div class="entry-edit" id="order-review-box" style="display:none;">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-order-review"><?php echo $this->__('Order Review') ?></h4>
+        </div>
+        <fieldset></fieldset>
+    </div>
+    <script type="text/javascript">
+        (function() {
+            var orderReviewBox = $('order-review-box');
+            if (orderReviewBox) {
+                $$('.head-products').first().up().up().insert({
+                    before: orderReviewBox
+                });
+                orderReviewBox.show();
+            }
+        })();
+    </script>
+<?php endif; ?>
+
+<?php foreach ($linkedAttributes as $fieldsetGroup => $attributesByFieldsetGroup) : ?>
+    <table cellspacing="0" class="form-list" id="aw-oa-<?php echo $fieldsetGroup; ?>" style="display:none;">
+        <tbody>
+            <?php foreach ($attributesByFieldsetGroup as $attribute) : ?>
+                <?php echo $attribute->unpackData()->getTypeModel()->getBackendViewRenderer()->setValue($this->getValueByAttributeId($attribute->getId()))->getHtml(); ?>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <script type="text/javascript">
+        (function(blockId) {
+            var awOaBlock = $('aw-oa-' + blockId);
+            var orderDetailsHead = $$('.head-' + blockId).first();
+            if (orderDetailsHead) {
+                var orderDetailsBlock = orderDetailsHead.up().next();
+                if (awOaBlock && orderDetailsBlock) {
+                    orderDetailsBlock.appendChild(awOaBlock);
+                    awOaBlock.show();
+                }
+            }
+        })('<?php echo $fieldsetGroup; ?>');
+    </script>
+<?php endforeach; ?>
+
+
+

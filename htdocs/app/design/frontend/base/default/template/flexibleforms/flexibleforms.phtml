@@ -1,0 +1,27 @@
+<?php echo $this->getMessagesBlock()->getGroupedHtml();
+$helper = Mage::helper('flexibleforms');
+if( $helper->enabledFlexibleforms() ):
+    $collection = $this->getCollection();
+    ?>
+    <div class="page-title category-title">
+        <h1><?php echo $this->__('Flexibleforms List') ?></h1>
+    </div>
+    <?php echo $this->getPagerHtml();
+    if($collection->getSize()): ?>
+        <div class="flexibleforms_list_content">
+            <ol>
+                <?php
+                foreach ($collection as $form)
+                {
+                    $formUrl = Mage::getModel('flexibleforms/flexibleforms')->getFormUrl($form->getFormUrlKey());
+                    ?>
+                    <li><a href="<?php echo $formUrl; ?>" title="<?php echo $form->getFormTitle(); ?>"><?php echo $form->getFormTitle(); ?></a></li>
+                    <?php
+                }?>
+            </ol>
+        </div>
+    <?php else: ?>
+        <p class="note-msg"><?php echo $this->__('Flexibleforms form not found.'); ?></p>
+    <?php endif;
+    echo $this->getPagerHtml();
+endif; ?>

@@ -1,0 +1,29 @@
+.google-map-contents {
+    width: 600px;
+    height: 400px;
+    border: 1px solid gray;
+}
+
+.google-map .coords {
+    min-height: 60px;
+    height: auto !important;
+}
+
+.google-map .coords input {
+    margin-right: 25px;
+}
+
+.google-map .coords label {
+    margin-right: 5px;
+}
+
+.search-location-block {
+    margin-top: 10px;
+    width: 221px;
+    float: left;
+}
+
+.search-location-block button {
+    width: 220px;
+}
+

@@ -1,0 +1,36 @@
+.recaptcha_theme_red #recaptcha_response_field { height:17px; }
+.flexibleforms_form ul { list-style:none !important; padding:0; margin:0 !important; }
+.flexibleforms_form ul li { margin-left:0 !important; }
+.flexibleforms_form ul li button.ui-datepicker-trigger { border:none; background:none; margin-left: 5px; }
+.flexibleforms_form ul li p.note { color:#a0a0a0; font-size:11px; font-style:italic; }
+.flexibleforms_form .form-list label { float:none; }
+.flexibleforms_form .form-list textarea { max-width: 100%; width: 365px; }
+
+.flexibleforms-index-index .pager { float:none; background:#f4f4f4; border-bottom:1px solid #ccc; border-top:1px solid #ccc; padding:8px 10px 5px; }
+.flexibleforms-index-index .pager > .count-container { float:right; }
+.flexibleforms-index-index .pager .amount, .flexibleforms-index-index .pager .limiter { margin-bottom:0; }
+.flexibleforms_list_content { padding:10px; }
+
+#label-info { position: relative; left:10px; top:2px; }
+#label-info img { display: inline; }
+#label-info .label-info-tooltip { display: none; position: absolute; max-width: 270px; width: 270px; min-height: 50px; z-index: 100; background-color: #f8f8f8; border: 1px solid #dedede; font-size: 12px; padding: 10px; border-radius: 2px; word-wrap: break-word; }
+#label-info:hover .label-info-tooltip, #label-info:active .label-info-tooltip { display: block; }
+.form-list input.input-text { width:228px; }
+.options-list label { font-weight: 400;}
+.jq-ry-container{position:relative;padding:0 5px;line-height:0;display:block;cursor:pointer; z-index:0;}
+.jq-ry-container[readonly=readonly]{cursor:default}
+.jq-ry-container>.jq-ry-group-wrapper{position:relative;width:100%}
+.jq-ry-container>.jq-ry-group-wrapper>.jq-ry-group{position:relative;line-height:0;z-index:10;white-space:nowrap}
+.jq-ry-container>.jq-ry-group-wrapper>.jq-ry-group>svg{display:inline-block}
+.jq-ry-container>.jq-ry-group-wrapper>.jq-ry-group.jq-ry-normal-group{width:100%}
+.jq-ry-container>.jq-ry-group-wrapper>.jq-ry-group.jq-ry-rated-group{width:0;z-index:11;position:absolute;top:0;left:0;overflow:hidden}
+
+@media only screen and (max-width: 480px) {
+    .flexibleforms_form ul li .input-box {
+        width:100%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .flexibleforms-index-index .pager { float:none !important; }
+}

@@ -1,0 +1,23 @@
+<?php
+$field_id	 = $this->field['field_id'];
+$field_title     = $this->field['title'];
+$required	 = $this->field['required'];
+$field_class     = $this->field['field_class'];
+$field_note	 = $this->field['field_note'];
+$tooltip	 = $this->field['tooltip'];
+?>
+<?php if($this->field['type']=='checkbox'): ?>
+    <label <?php echo $required ? ' class="required" ' : '' ?> ><?php echo $this->__($field_title); ?> <?php echo $required ? ' <em>*</em> ' : '' ?></label>
+    <?php if($tooltip): ?>
+        <span id="label-info">
+            <img src="<?php echo $this->getSkinUrl("css/flexibleforms/images/help.png"); ?>" alt="<?php echo $this->__('Help'); ?>" />
+            <span class="label-info-tooltip"><?php echo $tooltip; ?></span>
+        </span>
+    <?php endif; ?>
+    <div class="input-box">
+        <?php echo $this->getCheckboxField($field_id); ?>
+	<?php if($field_note): ?>
+        <p class="note"><?php echo $field_note; ?></p>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

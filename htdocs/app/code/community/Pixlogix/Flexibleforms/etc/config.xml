@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Pixlogix_Flexibleforms>
+            <version>0.7.0</version>
+        </Pixlogix_Flexibleforms>
+    </modules>
+    <frontend>
+        <routers>
+            <flexibleforms>
+                <use>standard</use>
+                <args>
+                    <module>Pixlogix_Flexibleforms</module>
+                    <frontName>flexibleforms</frontName>
+                </args>
+            </flexibleforms>
+        </routers>
+        <layout>
+            <updates>
+                <flexibleforms>
+                    <file>flexibleforms.xml</file>
+                </flexibleforms>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+        	<adminhtml>
+                <args>
+                    <modules>
+                        <flexibleforms before="Mage_Adminhtml">Pixlogix_Flexibleforms_Adminhtml</flexibleforms>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <menu>
+            <flexibleforms module="flexibleforms">
+                <depends>
+                    <config>flexibleforms_options/general/enable</config>
+                </depends>
+                <title>Flexible Forms</title>
+                <sort_order>100</sort_order>
+                <children>
+                    <items module="flexibleforms">
+                        <title>Manage Forms</title>
+                        <sort_order>10</sort_order>
+                        <action>adminhtml/flexibleforms_flexibleforms</action>
+                    </items>
+                    <general module="flexibleforms">
+                        <title>Forms Configuration</title>
+                        <sort_order>30</sort_order>
+                        <action>adminhtml/system_config/edit/section/flexibleforms_options</action>
+                    </general>
+                </children>
+            </flexibleforms>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <flexibleforms>
+                            <depends>
+                                <config>flexibleforms_options/general/enable</config>
+                            </depends>
+                            <title>Flexible Forms</title>
+                            <sort_order>100</sort_order>
+                            <children>
+                                <items module="flexibleforms">
+                                    <title>Manage Forms</title>
+                                    <sort_order>10</sort_order>
+                                    <action>flexibleforms/adminhtml_flexibleforms</action>
+                                </items>
+                            </children>
+                        </flexibleforms>
+                    </children>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <flexibleforms_options>
+                                            <title>Pixlogix Flexibleforms Configuration Section</title>
+                                        </flexibleforms_options>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <flexibleforms>
+                    <file>flexibleforms.xml</file>
+                </flexibleforms>
+            </updates>
+        </layout>
+    </adminhtml>
+    <global>
+        <models>
+            <flexibleforms>
+                <class>Pixlogix_Flexibleforms_Model</class>
+                <resourceModel>flexibleforms_mysql4</resourceModel>
+            </flexibleforms>
+            <flexibleforms_mysql4>
+                <class>Pixlogix_Flexibleforms_Model_Mysql4</class>
+                <entities>
+                    <flexibleforms>
+                        <table>flexibleforms</table>
+                    </flexibleforms>
+                    <fieldset>
+                        <table>flexibleforms_fieldset</table>
+                    </fieldset>
+                    <fields>
+                        <table>flexibleforms_fields</table>
+                    </fields>
+                    <options>
+                        <table>flexibleforms_options</table>
+                    </options>
+                    <result>
+                        <table>flexibleforms_result</table>
+                    </result>
+                </entities>
+            </flexibleforms_mysql4>
+        </models>
+        <resources>
+            <flexibleforms_setup>
+                <setup>
+                    <module>Pixlogix_Flexibleforms</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </flexibleforms_setup>
+            <flexibleforms_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </flexibleforms_write>
+            <flexibleforms_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </flexibleforms_read>
+        </resources>
+        <blocks>
+            <flexibleforms>
+                <class>Pixlogix_Flexibleforms_Block</class>
+            </flexibleforms>
+        </blocks>
+        <helpers>
+            <flexibleforms>
+                <class>Pixlogix_Flexibleforms_Helper</class>
+            </flexibleforms>
+        </helpers>
+        <events>
+            <controller_front_init_routers>
+                <observers>
+                    <flexibleforms>
+                        <class>Pixlogix_Flexibleforms_Controller_Router</class>
+                        <method>initControllerRouters</method>
+                    </flexibleforms>
+                </observers>
+            </controller_front_init_routers>
+        </events>
+		<rewrite>
+            <flexibleforms_index_view>
+                <complete />
+                <from>#^/flexibleforms/([A-Za-z0-9\-\_]+)\.html/*#</from>
+                <to>/flexibleforms/index/view/id/$1</to>
+            </flexibleforms_index_view>
+            <flexibleforms_index_view>
+                <complete />
+                <from>#^/flexibleforms/([A-Za-z0-9\-\_]+)\.html/*#</from>
+                <to>/flexibleforms/index/view/url/$1</to>
+            </flexibleforms_index_view>
+        </rewrite>
+        <template>
+            <email>
+                <flexibleforms_options_admin_email_configuration_admin_email_template>
+                    <label>Flexibleforms Admin Email</label>
+                    <file>flexibleforms/flexibleforms_form.html</file>
+                    <type>html</type>
+                </flexibleforms_options_admin_email_configuration_admin_email_template>
+                <flexibleforms_options_customer_email_configuration_customer_email_template>
+                    <label>Flexibleforms Customer Email</label>
+                    <file>flexibleforms/flexibleforms_form_customer.html</file>
+                    <type>html</type>
+                </flexibleforms_options_customer_email_configuration_customer_email_template>
+            </email>
+        </template>
+    </global>
+    <default>
+        <flexibleforms_options>
+            <general module="flexibleforms">
+                <enable>1</enable>
+                <enable_top_link>1</enable_top_link>
+                <enable_footer_link>1</enable_footer_link>
+                <enable_store_result_database>1</enable_store_result_database>
+            </general>
+            <general module="flexibleforms">
+                <enable_jquery>1</enable_jquery>
+            </general>
+            <admin_email_configuration>
+                <enable_to_admin>1</enable_to_admin>
+                <admin_email_template>flexibleforms_options_admin_email_configuration_admin_email_template</admin_email_template>
+            </admin_email_configuration>
+            <customer_email_configuration>
+                <enable_to_customer>1</enable_to_customer>
+                <customer_email_template>flexibleforms_options_customer_email_configuration_customer_email_template</customer_email_template>
+            </customer_email_configuration>
+            <product_inquiry_configuration>
+                <product_inquiry_section_title>Product Inquiry</product_inquiry_section_title>
+                <product_attribute>1,2,3</product_attribute>
+            </product_inquiry_configuration>
+        </flexibleforms_options>
+    </default>
+</config>
